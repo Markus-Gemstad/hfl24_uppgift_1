@@ -2,8 +2,6 @@ import 'dart:io';
 import 'package:uppgift_1/models/menu.dart';
 import 'package:uppgift_1/models/person.dart';
 import 'package:uppgift_1/repositories/person_repository.dart';
-import 'package:uppgift_1/models/person.dart';
-import 'package:uppgift_1/repositories/person_repository.dart';
 import 'package:uppgift_1/screens/screen_util.dart';
 
 void main(List<String> arguments) {

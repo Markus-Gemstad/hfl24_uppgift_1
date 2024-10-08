@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:uppgift_1/models/vehicle.dart';
-import 'package:uppgift_1/repositories/person_repository.dart';
 import 'package:uppgift_1/repositories/vehicle_repository.dart';
 import 'package:uppgift_1/screens/screen_util.dart';
 

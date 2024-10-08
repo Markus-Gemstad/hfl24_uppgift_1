@@ -7,21 +7,9 @@ class Parking extends BaseEntity {
   int vehicleId;
   int parkingSpaceId;
   //ParkingSpace get parkingSpace => ParkingSpaceRepository.
-class Parking extends BaseEntity {
-  int vehicleId;
-  int parkingSpaceId;
-  //ParkingSpace get parkingSpace => ParkingSpaceRepository.
   DateTime startTime;
   DateTime endTime;
 
-  Vehicle get vehicle => VehicleRepository.instance.getById(vehicleId);
-
-  Parking(this.vehicleId, this.parkingSpaceId, this.startTime, this.endTime);
-
-  @override
-  String toString() {
-    return "Id: $id, Fordon: [$vehicle], Parkeringsplats: $parkingSpaceId, Starttid: [$startTime], Sluttid: [$endTime]";
-  }
   Vehicle get vehicle => VehicleRepository.instance.getById(vehicleId);
 
   Parking(this.vehicleId, this.parkingSpaceId, this.startTime, this.endTime);
