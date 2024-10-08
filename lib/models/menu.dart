@@ -1,4 +1,5 @@
 import 'package:uppgift_1/screens/person_sceen.dart';
+import 'package:uppgift_1/screens/vehicle_sceen.dart';
 
 List<MenuItem> menu = [
   MenuItem('Personer', subMenu: [
@@ -9,10 +10,10 @@ List<MenuItem> menu = [
     MenuItem('Gå tillbaka till huvudmenyn', doBack: true),
   ]),
   MenuItem('Fordon', subMenu: [
-    MenuItem('Skapa nytt fordon'),
-    MenuItem('Visa alla fordon'),
-    MenuItem('Uppdatera fordon'),
-    MenuItem('Ta bort fordon'),
+    MenuItem('Skapa nytt fordon', screenFunction: screenAddVehicle),
+    MenuItem('Visa alla fordon', screenFunction: screenShowAllVehicles),
+    MenuItem('Uppdatera fordon', screenFunction: screenUpdateVehicle),
+    MenuItem('Ta bort fordon', screenFunction: screenDeleteVehicle),
     MenuItem('Gå tillbaka till huvudmenyn', doBack: true),
   ]),
   MenuItem('Parkeringsplatser', subMenu: [

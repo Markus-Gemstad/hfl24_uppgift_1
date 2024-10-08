@@ -33,9 +33,9 @@ void screenUpdatePerson() {
   clearScreen();
 
   stdout.writeln(
-      "Uppdatera person - lämna fält tomma (tryck ENTER) för att inte uppdatera");
+      "Uppdatera person - lämna fält tomma (tryck ENTER) för att lämna uppgift oförändrad.");
 
-  stdout.write("Ange ID:");
+  stdout.write("Ange personens ID:");
   int? id = int.parse(stdin.readLineSync().toString());
 
   stdout.write("Ange ett nytt namn:");

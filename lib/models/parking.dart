@@ -1,19 +1,22 @@
+import 'package:uppgift_1/models/base_entity.dart';
+import 'package:uppgift_1/repositories/vehicle_repository.dart';
+
 import 'parking_space.dart';
 import 'vehicle.dart';
 
-class Parking {
-  Vehicle vehicle;
-  ParkingSpace parkingSpace;
+class Parking extends BaseEntity {
+  int vehicleId;
+  int parkingSpaceId;
+  //ParkingSpace get parkingSpace => ParkingSpaceRepository.
   DateTime startTime;
   DateTime endTime;
 
-  Parking(this.vehicle, this.parkingSpace, this.startTime, this.endTime);
-}
+  Vehicle get vehicle => VehicleRepository.instance.getById(vehicleId);
 
-class ParkingRepository {
-  //add(item)
-  //getAll()
-  //getById(id)
-  //update(item)
-  //delete(id)
+  Parking(this.vehicleId, this.parkingSpaceId, this.startTime, this.endTime);
+
+  @override
+  String toString() {
+    return "Id: $id, Fordon: [$vehicle], Parkeringsplats: $parkingSpaceId, Starttid: [$startTime], Sluttid: [$endTime]";
+  }
 }
