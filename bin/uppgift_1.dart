@@ -5,7 +5,7 @@ import 'package:uppgift_1/repositories/person_repository.dart';
 import 'package:uppgift_1/screens/screen_util.dart';
 
 void main(List<String> arguments) {
-  PrePopulateRepositories();
+  prePopulateRepositories();
 
   bool exit = false;
   while (!exit) {
@@ -30,7 +30,7 @@ void main(List<String> arguments) {
   print("Programmet avslutas...");
 }
 
-void PrePopulateRepositories() {
+void prePopulateRepositories() {
   PersonRepository.instance.add(Person("Markus Gemstad", "1122334455"));
 }
 
