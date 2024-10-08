@@ -16,8 +16,8 @@ void main(List<String> arguments) {
             selectedMenu.subMenu!);
         if (selectedSubMenu != null) {
           back = selectedSubMenu.doBack;
-          if (selectedSubMenu.displayFunction != null) {
-            selectedSubMenu.displayFunction!();
+          if (selectedSubMenu.screenFunction != null) {
+            selectedSubMenu.screenFunction!();
           }
         }
       }

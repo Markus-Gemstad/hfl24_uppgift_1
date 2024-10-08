@@ -1,9 +1,10 @@
-class Person {
-  int id;
+import 'package:uppgift_1/models/base_entity.dart';
+
+class Person extends BaseEntity {
   String name;
   String personnr;
 
-  Person(this.id, this.name, this.personnr);
+  Person(this.name, this.personnr);
 
   @override
   String toString() {

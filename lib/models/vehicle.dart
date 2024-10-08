@@ -1,19 +1,13 @@
+import 'package:uppgift_1/models/base_entity.dart';
+
 import 'person.dart';
 
-enum Type { car, motorcycle, truck }
+enum VehicleType { car, motorcycle, truck }
 
-class Vehicle {
+class Vehicle extends BaseEntity {
   String regNr;
-  Type type;
+  VehicleType type;
   Person owner;
 
   Vehicle(this.regNr, this.type, this.owner);
-}
-
-class VehicleRepository {
-  //add(item)
-  //getAll()
-  //getById(id)
-  //update(item)
-  //delete(id)
 }
