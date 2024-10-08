@@ -1,8 +1,12 @@
 import 'dart:io';
 import 'package:uppgift_1/models/menu.dart';
+import 'package:uppgift_1/models/person.dart';
+import 'package:uppgift_1/repositories/person_repository.dart';
 import 'package:uppgift_1/screens/screen_util.dart';
 
 void main(List<String> arguments) {
+  PrePopulateRepositories();
+
   bool exit = false;
   while (!exit) {
     MenuItem? selectedMenu = displayMenu(
@@ -24,6 +28,10 @@ void main(List<String> arguments) {
     }
   }
   print("Programmet avslutas...");
+}
+
+void PrePopulateRepositories() {
+  PersonRepository.instance.add(Person("Markus Gemstad", "1122334455"));
 }
 
 MenuItem? displayMenu(String intro, List<MenuItem> menu) {
