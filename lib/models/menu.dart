@@ -1,3 +1,5 @@
+import 'package:uppgift_1/screens/parking_screen.dart';
+import 'package:uppgift_1/screens/parking_space_screen.dart';
 import 'package:uppgift_1/screens/person_sceen.dart';
 import 'package:uppgift_1/screens/vehicle_sceen.dart';
 
@@ -8,6 +10,7 @@ List<MenuItem> menu = [
     MenuItem('Uppdatera person', screenFunction: screenUpdatePerson),
     MenuItem('Ta bort person', screenFunction: screenDeletePerson),
     MenuItem('Gå tillbaka till huvudmenyn', doBack: true),
+    MenuItem('Avsluta programmet', doExit: true),
   ]),
   MenuItem('Fordon', subMenu: [
     MenuItem('Skapa nytt fordon', screenFunction: screenAddVehicle),
@@ -15,20 +18,26 @@ List<MenuItem> menu = [
     MenuItem('Uppdatera fordon', screenFunction: screenUpdateVehicle),
     MenuItem('Ta bort fordon', screenFunction: screenDeleteVehicle),
     MenuItem('Gå tillbaka till huvudmenyn', doBack: true),
+    MenuItem('Avsluta programmet', doExit: true),
   ]),
   MenuItem('Parkeringsplatser', subMenu: [
-    MenuItem('Skapa ny parkeringsplats'),
-    MenuItem('Visa alla parkeringsplatser'),
-    MenuItem('Uppdatera parkeringsplats'),
-    MenuItem('Ta bort parkeringsplats'),
+    MenuItem('Skapa ny parkeringsplats', screenFunction: screenAddParkingSpace),
+    MenuItem('Visa alla parkeringsplatser',
+        screenFunction: screenShowAllParkingSpaces),
+    MenuItem('Uppdatera parkeringsplats',
+        screenFunction: screenUpdateParkingSpace),
+    MenuItem('Ta bort parkeringsplats', screenFunction: screenDeleteParking),
     MenuItem('Gå tillbaka till huvudmenyn', doBack: true),
+    MenuItem('Avsluta programmet', doExit: true),
   ]),
   MenuItem('Parkeringar', subMenu: [
-    MenuItem('Skapa ny parkering'),
-    MenuItem('Visa alla parkeringar'),
-    MenuItem('Uppdatera parkering'),
-    MenuItem('Ta bort parkering'),
+    MenuItem('Skapa ny parkering', screenFunction: screenAddParking),
+    MenuItem('Visa alla parkeringar (och se pris)',
+        screenFunction: screenShowAllParkings),
+    MenuItem('Uppdatera parkering', screenFunction: screenUpdateParking),
+    MenuItem('Ta bort parkering', screenFunction: screenDeleteParking),
     MenuItem('Gå tillbaka till huvudmenyn', doBack: true),
+    MenuItem('Avsluta programmet', doExit: true),
   ]),
   MenuItem('Avsluta', doExit: true),
 ];

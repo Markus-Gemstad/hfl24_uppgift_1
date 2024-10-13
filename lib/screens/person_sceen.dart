@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:uppgift_1/models/base_entity.dart';
 import 'package:uppgift_1/models/person.dart';
 import 'package:uppgift_1/repositories/person_repository.dart';
 import 'package:uppgift_1/screens/screen_util.dart';
@@ -6,13 +7,13 @@ import 'package:uppgift_1/screens/screen_util.dart';
 void screenAddPerson() {
   clearScreen();
 
-  stdout.write("Ange namn:");
-  String name = stdin.readLineSync().toString();
+  String name =
+      readValidInputString("Ange namn (1-255 tecken):", Person.isValidName);
 
-  stdout.write("Ange personnummer (YYMMDDNNNN):");
-  String personnr = stdin.readLineSync().toString();
+  String personnr = readValidInputString(
+      "Ange personnummer (YYYYMMDDNNNN):", Person.isValidPersonNr);
 
-  Person person = Person(name, personnr);
+  Person person = Person.addNew(name, personnr);
   PersonRepository.instance.add(person);
 
   stdout.writeln("Person skapad med följande uppgifter:\n");
@@ -32,20 +33,25 @@ void screenShowAllPersons() {
 void screenUpdatePerson() {
   clearScreen();
 
-  stdout.writeln(
-      "Uppdatera person - lämna fält tomma (tryck ENTER) för att lämna uppgift oförändrad.");
+  int id = readValidInputInt(
+      "Ange ID på person som ska ändras:", BaseEntity.isValidId);
 
-  stdout.write("Ange personens ID:");
-  int? id = int.parse(stdin.readLineSync().toString());
+  try {
+    PersonRepository.instance.getById(id);
+  } catch (e) {
+    stdout.write("\nFEL! Det finns ingen person med angivet ID.");
+    stdout.write("\nTryck ENTER för att gå tillbaka");
+    stdin.readLineSync();
+    return;
+  }
 
-  stdout.write("Ange ett nytt namn:");
-  String name = stdin.readLineSync().toString();
+  String name = readValidInputString(
+      "Ange ett nytt namn (1-255 tecken):", Person.isValidName);
 
-  stdout.write("Ange ett nytt personnummer:");
-  String personnr = stdin.readLineSync().toString();
+  String personnr = readValidInputString(
+      "Ange ett nytt personnummer (YYYYMMDDNNNN):", Person.isValidPersonNr);
 
-  Person person = Person(name, personnr);
-  person.id = id;
+  Person person = Person(id, name, personnr);
   PersonRepository.instance.update(person);
 
   stdout.writeln("Person updaterad med följande uppgifter:\n");
@@ -57,11 +63,20 @@ void screenUpdatePerson() {
 void screenDeletePerson() {
   clearScreen();
 
-  stdout.write("Ange ID på person som ska tas bort:");
-  int? id = int.parse(stdin.readLineSync().toString());
+  int id = readValidInputInt(
+      "Ange ID på person som ska tas bort:", BaseEntity.isValidId);
 
-  PersonRepository.instance.delete(id);
-  stdout.writeln("Person med id:$id har tagits bort:\n");
+  try {
+    PersonRepository.instance.delete(id);
+  } catch (e) {
+    stdout.write(
+        "\nFEL! Person med ID:$id kunde inte tas bort! Errormessage: $e\n");
+    stdout.write("\nTryck ENTER för att gå tillbaka");
+    stdin.readLineSync();
+    return;
+  }
+
+  stdout.writeln("Person med ID:$id har tagits bort:\n");
   stdout.write("\nTryck ENTER för att gå tillbaka");
   stdin.readLineSync();
 }

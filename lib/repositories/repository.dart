@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:uppgift_1/models/base_entity.dart';
 
 abstract class Repository<T extends BaseEntity> {
@@ -27,4 +29,10 @@ abstract class Repository<T extends BaseEntity> {
   String toString() {
     return items.join("\n");
   }
+
+  String toJson() {
+    return jsonEncode(items);
+  }
+
+  List<T> parseJson(String jsonString);
 }
